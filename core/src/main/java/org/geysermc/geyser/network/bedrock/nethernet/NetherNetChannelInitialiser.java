@@ -81,6 +81,7 @@ public class NetherNetChannelInitialiser extends GeyserServerInitializer {
 
         // Nothing is compressed until the peer sets compression after RequestNetworkSettings
         channel.pipeline()
+                .addLast(NetherNetBufferGuard.NAME, NetherNetBufferGuard.INSTANCE)
                 .addLast(NetherNetFrameCodec.NAME, NetherNetFrameCodec.INSTANCE)
                 .addLast(CompressionCodec.NAME, new CompressionCodec(NOOP_STRATEGY, false));
     }
