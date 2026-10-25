@@ -31,7 +31,7 @@ public class NetherNetBufferGuard extends ChannelOutboundHandlerAdapter {
     @Override
     public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) {
         DataChannel reliable = (DataChannel) RELIABLE_CHANNEL.get((NetherNetChannel) ctx.channel());
-        int buffered = reliable == null || !reliable.isOpen() ? 0 : reliable.bufferedAmount();
+        int buffered = reliable == null ? 0 : reliable.bufferedAmount();
         if (buffered > MAX_BUFFERED_BYTES) {
             GeyserImpl.getInstance().getLogger().warning("Closing NetherNet connection " + ctx.channel().remoteAddress()
                     + ": " + buffered + " bytes stuck in the send buffer");

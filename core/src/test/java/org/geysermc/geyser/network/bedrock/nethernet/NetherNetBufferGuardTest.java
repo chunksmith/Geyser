@@ -42,7 +42,6 @@ class NetherNetBufferGuardTest {
 
     private static ChannelHandlerContext write(int buffered, ByteBuf message, ChannelPromise promise) {
         DataChannel reliable = mock(DataChannel.class);
-        when(reliable.isOpen()).thenReturn(true);
         when(reliable.bufferedAmount()).thenReturn(buffered);
         NetherNetChannel channel = mock(NetherNetChildChannel.class);
         NetherNetBufferGuard.RELIABLE_CHANNEL.set(channel, reliable);
