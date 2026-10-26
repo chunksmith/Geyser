@@ -32,6 +32,7 @@ import io.netty.channel.ChannelFactory;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.DefaultEventLoopGroup;
+import io.netty.channel.EventLoop;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.ReflectiveChannelFactory;
 import io.netty.channel.unix.PreferredDirectByteBufAllocator;
@@ -76,6 +77,10 @@ public final class LocalSession extends ClientNetworkSession {
 
     @Override
     protected EventLoopGroup getEventLoopGroup() {
+        if (packetHandlerExecutor instanceof EventLoop eventLoop) {
+            return eventLoop;
+        }
+
         if (DEFAULT_EVENT_LOOP_GROUP == null) {
             DEFAULT_EVENT_LOOP_GROUP = new DefaultEventLoopGroup(new DefaultThreadFactory(this.getClass(), true));
             Runtime.getRuntime().addShutdownHook(new Thread(
