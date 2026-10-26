@@ -85,6 +85,17 @@ import java.util.Optional;
 @Getter
 @Setter
 public class LivingEntity extends Entity implements Tickable {
+    private static final ClassValue<Boolean> ONLY_TICKS_LERP = new ClassValue<>() {
+        @Override
+        protected Boolean computeValue(Class<?> type) {
+            try {
+                return type.getMethod("tick").getDeclaringClass() == LivingEntity.class && type.getMethod("drawTick").getDeclaringClass() == Tickable.class;
+            } catch (NoSuchMethodException e) {
+                return false;
+            }
+        }
+    };
+
     protected EnumMap<EquipmentSlot, GeyserItemStack> equipment = new EnumMap<>(EquipmentSlot.class);
 
     @Getter(value = AccessLevel.NONE)
@@ -444,6 +455,7 @@ public class LivingEntity extends Entity implements Tickable {
             // Lerp position should be used as base if we have lerp steps left to ensure we don't de-sync with the position provided by the server
             this.lerpPosition = lerpSteps == 0 ? this.position.add(relX, relY, relZ) : this.lerpPosition.add(relX, relY, relZ);
             this.lerpSteps = 3;
+            session.getEntityCache().markLerping(this);
         } else {
             super.moveRelative(relX, relY, relZ, yaw, pitch, headYaw, isOnGround);
         }
@@ -463,9 +475,18 @@ public class LivingEntity extends Entity implements Tickable {
 
             this.lerpPosition = position;
             this.lerpSteps = 3;
+            session.getEntityCache().markLerping(this);
         } else {
             super.moveAbsolute(position, yaw, pitch, headYaw, isOnGround, teleported);
         }
+    }
+
+    public boolean isLerping() {
+        return lerpSteps > 0;
+    }
+
+    public static boolean onlyTicksLerp(Class<? extends Entity> type) {
+        return ONLY_TICKS_LERP.get(type);
     }
 
     public boolean shouldLerp() {

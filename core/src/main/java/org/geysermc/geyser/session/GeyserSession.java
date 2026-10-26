@@ -138,6 +138,7 @@ import org.geysermc.geyser.entity.type.BoatEntity;
 import org.geysermc.geyser.entity.type.Entity;
 import org.geysermc.geyser.entity.type.FishingHookEntity;
 import org.geysermc.geyser.entity.type.ItemFrameEntity;
+import org.geysermc.geyser.entity.type.LivingEntity;
 import org.geysermc.geyser.entity.type.Tickable;
 import org.geysermc.geyser.entity.type.player.PlayerEntity;
 import org.geysermc.geyser.entity.type.player.SessionPlayerEntity;
@@ -1427,6 +1428,16 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource, Jav
                 entity.drawTick();
                 if (gameShouldUpdate) {
                     entity.tick();
+                }
+            }
+
+            if (gameShouldUpdate) {
+                for (Iterator<LivingEntity> it = entityCache.getLerpingEntities().iterator(); it.hasNext(); ) {
+                    LivingEntity entity = it.next();
+                    entity.tick();
+                    if (!entity.isLerping()) {
+                        it.remove();
+                    }
                 }
             }
 

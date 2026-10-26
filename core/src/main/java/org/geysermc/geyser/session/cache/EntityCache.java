@@ -34,9 +34,11 @@ import it.unimi.dsi.fastutil.objects.Object2LongOpenHashMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
 import lombok.Getter;
 import org.geysermc.geyser.entity.EntitySpectateHelper;
 import org.geysermc.geyser.entity.type.Entity;
+import org.geysermc.geyser.entity.type.LivingEntity;
 import org.geysermc.geyser.entity.type.Tickable;
 import org.geysermc.geyser.entity.type.player.PlayerEntity;
 import org.geysermc.geyser.session.GeyserSession;
@@ -78,6 +80,8 @@ public class EntityCache {
      */
     @Getter
     private final List<Tickable> tickableEntities = new ObjectArrayList<>();
+    @Getter
+    private final Set<LivingEntity> lerpingEntities = new ReferenceOpenHashSet<>();
     private final Int2LongMap entityIdTranslations = new Int2LongOpenHashMap();
     private final Object2LongMap<UUID> entityUuidTranslations = new Object2LongOpenHashMap<>();
     private final Map<UUID, PlayerEntity> playerEntities = new Object2ObjectOpenHashMap<>();
@@ -116,9 +120,9 @@ public class EntityCache {
 
             entity.spawnEntity();
 
-            if (entity instanceof Tickable) {
+            if (entity instanceof Tickable tickable && !LivingEntity.onlyTicksLerp(entity.getClass())) {
                 // Start ticking it
-                tickableEntities.add((Tickable) entity);
+                tickableEntities.add(tickable);
             }
 
             session.getWaypointCache().addEntity(entity);
@@ -196,13 +200,21 @@ public class EntityCache {
         // don't track the entity anymore, now that it's removed
         session.getWorldCache().getScoreboard().entityRemoved(entity);
 
-        if (entity instanceof Tickable) {
+        if (entity instanceof LivingEntity living && LivingEntity.onlyTicksLerp(living.getClass())) {
+            lerpingEntities.remove(living);
+        } else if (entity instanceof Tickable) {
             tickableEntities.remove(entity);
         }
 
         session.getWaypointCache().removeEntity(entity);
 
         dirtyEntities.remove(entity);
+    }
+
+    public void markLerping(LivingEntity entity) {
+        if (entity.isValid() && LivingEntity.onlyTicksLerp(entity.getClass())) {
+            lerpingEntities.add(entity);
+        }
     }
 
     public void markDirty(Entity entity) {
