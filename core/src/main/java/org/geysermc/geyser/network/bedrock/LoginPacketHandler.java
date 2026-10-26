@@ -31,6 +31,8 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodec;
 import org.cloudburstmc.protocol.bedrock.codec.compat.BedrockCompat;
 import org.cloudburstmc.protocol.bedrock.data.PacketCompressionAlgorithm;
+import org.cloudburstmc.protocol.bedrock.netty.BedrockBatchWrapper;
+import org.cloudburstmc.protocol.bedrock.netty.codec.compression.BatchCompression;
 import org.cloudburstmc.protocol.bedrock.netty.codec.compression.CompressionStrategy;
 import org.cloudburstmc.protocol.bedrock.netty.codec.compression.SimpleCompressionStrategy;
 import org.cloudburstmc.protocol.bedrock.netty.codec.compression.ZlibCompression;
@@ -61,6 +63,7 @@ import java.util.OptionalInt;
  */
 public class LoginPacketHandler extends LoggingPacketHandler {
     private static final String ENCRYPTED_INPUT_MARKER = "geyser-encrypted-input-marker";
+    private static final int COMPRESSION_THRESHOLD = 512;
 
     private final CompressionStrategy compressionStrategy;
     private Stage stage = Stage.NETWORK_SETTINGS;
@@ -75,7 +78,12 @@ public class LoginPacketHandler extends LoggingPacketHandler {
 
         ZlibCompression compression = new ZlibCompression(Zlib.RAW);
         compression.setLevel(this.geyser.config().advanced().bedrock().compressionLevel());
-        this.compressionStrategy = new SimpleCompressionStrategy(compression);
+        this.compressionStrategy = new SimpleCompressionStrategy(compression) {
+            @Override
+            public BatchCompression getCompression(BedrockBatchWrapper wrapper) {
+                return wrapper.getUncompressed().readableBytes() < COMPRESSION_THRESHOLD ? getCompression(PacketCompressionAlgorithm.NONE) : super.getCompression(wrapper);
+            }
+        };
     }
 
     @Override
@@ -137,7 +145,7 @@ public class LoginPacketHandler extends LoggingPacketHandler {
         // New since 1.19.30 - sent before login packet
         NetworkSettingsPacket responsePacket = new NetworkSettingsPacket();
         responsePacket.setCompressionAlgorithm(PacketCompressionAlgorithm.ZLIB);
-        responsePacket.setCompressionThreshold(512);
+        responsePacket.setCompressionThreshold(COMPRESSION_THRESHOLD);
         session.sendUpstreamPacketImmediately(responsePacket);
         session.getUpstream().getSession().getPeer().setCompression(compressionStrategy);
 
