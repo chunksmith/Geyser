@@ -1,0 +1,118 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "org.cloudburstmc.netty",
+    "module": "netty-transport-common",
+    "version": "2.0.0.CR6-chunksmith.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.2.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "io.netty",
+          "module": "netty-transport",
+          "version": {
+            "requires": "4.1.130.Final"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "netty-transport-common-2.0.0.CR6-chunksmith.1.jar",
+          "url": "netty-transport-common-2.0.0.CR6-chunksmith.1.jar",
+          "size": 3587,
+          "sha512": "f1e6bb04402eba3159795a79ef69ac875200c68b9a78670f7e03250decc7f1f6e0940985612fe2fe8b0b5cd108b6648b21c736dd09d8e138ecacda7da9f2b776",
+          "sha256": "d8de2ccfb2c6d1bcfa3d397803e3e8bcd92e392b88d5d952e6f28e0884c673e4",
+          "sha1": "45c74250511c7a9e78a92f6aa865345b932dd22e",
+          "md5": "58e2a4b9bc4c1737bbd82026ab942f8a"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "io.netty",
+          "module": "netty-transport",
+          "version": {
+            "requires": "4.1.130.Final"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "netty-transport-common-2.0.0.CR6-chunksmith.1.jar",
+          "url": "netty-transport-common-2.0.0.CR6-chunksmith.1.jar",
+          "size": 3587,
+          "sha512": "f1e6bb04402eba3159795a79ef69ac875200c68b9a78670f7e03250decc7f1f6e0940985612fe2fe8b0b5cd108b6648b21c736dd09d8e138ecacda7da9f2b776",
+          "sha256": "d8de2ccfb2c6d1bcfa3d397803e3e8bcd92e392b88d5d952e6f28e0884c673e4",
+          "sha1": "45c74250511c7a9e78a92f6aa865345b932dd22e",
+          "md5": "58e2a4b9bc4c1737bbd82026ab942f8a"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "netty-transport-common-2.0.0.CR6-chunksmith.1-javadoc.jar",
+          "url": "netty-transport-common-2.0.0.CR6-chunksmith.1-javadoc.jar",
+          "size": 27790,
+          "sha512": "b701bc1b558475c94efa79f842721549ef945c8ca0604edf590e2a9bd9ca56693af0a175a636234da9ba8047a8a9efe5aaeb8cc6c4c5f45e45eb00173cabf316",
+          "sha256": "05416db8ab3e15e08b359505abcc69739b104f1598d7c78188f3057779c3fe61",
+          "sha1": "32ae61cae37c28634a39dcdfdb602b335333b6df",
+          "md5": "3636e52ffa9ff863b78351eb32d35bfa"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "netty-transport-common-2.0.0.CR6-chunksmith.1-sources.jar",
+          "url": "netty-transport-common-2.0.0.CR6-chunksmith.1-sources.jar",
+          "size": 4073,
+          "sha512": "067b40e98c0cebafb17e79951421571d029de217263c39a6c5d1877e052958f73c9cd4b9713dfc527e00a4f203a5ca203cf16394e8572f9996e43ccce4d93b0f",
+          "sha256": "13d9615fd7fa8d493e12db54d98d5d1cf96f333b75dbe5da1901acd60cd70f20",
+          "sha1": "49b4d0aeb8c3fdcb7b0ee7ee6188d2d65a777a26",
+          "md5": "a19ab39f8ccf35009f14edaca8d07449"
+        }
+      ]
+    }
+  ]
+}

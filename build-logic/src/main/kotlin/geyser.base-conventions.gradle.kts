@@ -30,6 +30,13 @@ repositories {
 
     mavenCentral()
 
+    maven(rootDir.resolve("chunksmith-repo")) {
+        mavenContent {
+            includeVersionByRegex("org\\.cloudburstmc\\.netty", ".*", ".*-chunksmith\\..*")
+            includeVersionByRegex("dev\\.opencollab", "libdatachannel-java-arch-detect", ".*-chunksmith\\..*")
+        }
+    }
+
     // Floodgate, Cumulus etc.
     maven("https://repo.opencollab.dev/main")
 

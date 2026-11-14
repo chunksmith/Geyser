@@ -1,0 +1,216 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "org.cloudburstmc.netty",
+    "module": "netty-transport-raknet",
+    "version": "2.0.0.CR6-chunksmith.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.2.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "org.cloudburstmc.netty",
+          "module": "netty-transport-common",
+          "version": {
+            "requires": "2.0.0.CR6-chunksmith.1"
+          }
+        },
+        {
+          "group": "io.netty",
+          "module": "netty-common",
+          "version": {
+            "requires": "4.1.130.Final"
+          }
+        },
+        {
+          "group": "io.netty",
+          "module": "netty-buffer",
+          "version": {
+            "requires": "4.1.130.Final"
+          }
+        },
+        {
+          "group": "io.netty",
+          "module": "netty-codec",
+          "version": {
+            "requires": "4.1.130.Final"
+          }
+        },
+        {
+          "group": "io.netty",
+          "module": "netty-transport",
+          "version": {
+            "requires": "4.1.130.Final"
+          }
+        },
+        {
+          "group": "io.netty",
+          "module": "netty-transport-native-unix-common",
+          "version": {
+            "requires": "4.1.130.Final"
+          }
+        },
+        {
+          "group": "io.netty",
+          "module": "netty-codec-haproxy",
+          "version": {
+            "requires": "4.1.130.Final"
+          }
+        },
+        {
+          "group": "net.jodah",
+          "module": "expiringmap",
+          "version": {
+            "requires": "0.5.10"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "netty-transport-raknet-2.0.0.CR6-chunksmith.1.jar",
+          "url": "netty-transport-raknet-2.0.0.CR6-chunksmith.1.jar",
+          "size": 164029,
+          "sha512": "a6dba16d2273ea4dc06a04cf066041bd80f9d3f768c2a465347acd6443b0d9246278209345c22d10011b9fea705d7d31a07e846f666c7b320ae73d9ff9020c5c",
+          "sha256": "005f876f60b4d6aaf151d37e1e1f7b4444af1064ce1842622f2e75f6fb3e255b",
+          "sha1": "0783ebe50b5a3517cfc290de6bc4d7314e2bc94b",
+          "md5": "f92e43636d780ab88f289da230314e23"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.cloudburstmc.netty",
+          "module": "netty-transport-common",
+          "version": {
+            "requires": "2.0.0.CR6-chunksmith.1"
+          }
+        },
+        {
+          "group": "io.netty",
+          "module": "netty-common",
+          "version": {
+            "requires": "4.1.130.Final"
+          }
+        },
+        {
+          "group": "io.netty",
+          "module": "netty-buffer",
+          "version": {
+            "requires": "4.1.130.Final"
+          }
+        },
+        {
+          "group": "io.netty",
+          "module": "netty-codec",
+          "version": {
+            "requires": "4.1.130.Final"
+          }
+        },
+        {
+          "group": "io.netty",
+          "module": "netty-transport",
+          "version": {
+            "requires": "4.1.130.Final"
+          }
+        },
+        {
+          "group": "io.netty",
+          "module": "netty-transport-native-unix-common",
+          "version": {
+            "requires": "4.1.130.Final"
+          }
+        },
+        {
+          "group": "io.netty",
+          "module": "netty-codec-haproxy",
+          "version": {
+            "requires": "4.1.130.Final"
+          }
+        },
+        {
+          "group": "net.jodah",
+          "module": "expiringmap",
+          "version": {
+            "requires": "0.5.10"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "netty-transport-raknet-2.0.0.CR6-chunksmith.1.jar",
+          "url": "netty-transport-raknet-2.0.0.CR6-chunksmith.1.jar",
+          "size": 164029,
+          "sha512": "a6dba16d2273ea4dc06a04cf066041bd80f9d3f768c2a465347acd6443b0d9246278209345c22d10011b9fea705d7d31a07e846f666c7b320ae73d9ff9020c5c",
+          "sha256": "005f876f60b4d6aaf151d37e1e1f7b4444af1064ce1842622f2e75f6fb3e255b",
+          "sha1": "0783ebe50b5a3517cfc290de6bc4d7314e2bc94b",
+          "md5": "f92e43636d780ab88f289da230314e23"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "netty-transport-raknet-2.0.0.CR6-chunksmith.1-javadoc.jar",
+          "url": "netty-transport-raknet-2.0.0.CR6-chunksmith.1-javadoc.jar",
+          "size": 295329,
+          "sha512": "5036f9ff454b67f89c2eaad87b70c7e2886a0e8c7479473829827ae6af22a77bbe549466604671956dd21c7a3bf6779babefc05832eba19ebe101863ae65d51c",
+          "sha256": "39ace667734cde9ddc6b1fe6a952c6f4205c2b30975da5db187cf184f5b77a55",
+          "sha1": "e94eed44f936c3f38b746013e64d076922b832ac",
+          "md5": "01281e917fe47817f614e5c7e74f0e60"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "netty-transport-raknet-2.0.0.CR6-chunksmith.1-sources.jar",
+          "url": "netty-transport-raknet-2.0.0.CR6-chunksmith.1-sources.jar",
+          "size": 119049,
+          "sha512": "8fe6716f080bdd7b64925753a341aa7cc29c0068e7cc75d76d3b336520f8b23528851d74a3b8603e4210884de4dbe5c6e3614edcbf51ea3ed1ade95acd1086cb",
+          "sha256": "c5251fecb92b5d5d822a73146724b956b5cc50bcb099ed358f1cb1f0ddf51398",
+          "sha1": "a04eff5fb98e6a9db534148c31507ed9d509e227",
+          "md5": "82a9940b591399ee9351f9b45e9aff5a"
+        }
+      ]
+    }
+  ]
+}

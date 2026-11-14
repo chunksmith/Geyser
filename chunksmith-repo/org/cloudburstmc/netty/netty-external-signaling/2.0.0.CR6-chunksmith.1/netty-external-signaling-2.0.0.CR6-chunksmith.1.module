@@ -1,0 +1,139 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "org.cloudburstmc.netty",
+    "module": "netty-external-signaling",
+    "version": "2.0.0.CR6-chunksmith.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.2.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "com.google.code.gson",
+          "module": "gson",
+          "version": {
+            "requires": "2.13.2"
+          }
+        },
+        {
+          "group": "org.cloudburstmc.netty",
+          "module": "netty-transport-nethernet",
+          "version": {
+            "requires": "2.0.0.CR6-chunksmith.1"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "netty-external-signaling-2.0.0.CR6-chunksmith.1.jar",
+          "url": "netty-external-signaling-2.0.0.CR6-chunksmith.1.jar",
+          "size": 375023,
+          "sha512": "1be708f37b21825fbf5e698953e6f7bc23f83062d47e957daae0906cdde142b3da7104b2cf7ce6b1088e24e28db7c5a9207d47034dbf672c40e40d04a15a0c9f",
+          "sha256": "9458c3adf1553908152593da328536f89d977a53659a2339feaa662231e2b7ac",
+          "sha1": "c97635ed9e9714993cac3fdcb403b42717c2796d",
+          "md5": "ad9681d75268d72b106d2895848f8bf4"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.bouncycastle",
+          "module": "bcpkix-jdk18on",
+          "version": {
+            "requires": "1.85"
+          }
+        },
+        {
+          "group": "com.google.code.gson",
+          "module": "gson",
+          "version": {
+            "requires": "2.13.2"
+          }
+        },
+        {
+          "group": "org.cloudburstmc.netty",
+          "module": "netty-transport-nethernet",
+          "version": {
+            "requires": "2.0.0.CR6-chunksmith.1"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "netty-external-signaling-2.0.0.CR6-chunksmith.1.jar",
+          "url": "netty-external-signaling-2.0.0.CR6-chunksmith.1.jar",
+          "size": 375023,
+          "sha512": "1be708f37b21825fbf5e698953e6f7bc23f83062d47e957daae0906cdde142b3da7104b2cf7ce6b1088e24e28db7c5a9207d47034dbf672c40e40d04a15a0c9f",
+          "sha256": "9458c3adf1553908152593da328536f89d977a53659a2339feaa662231e2b7ac",
+          "sha1": "c97635ed9e9714993cac3fdcb403b42717c2796d",
+          "md5": "ad9681d75268d72b106d2895848f8bf4"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "netty-external-signaling-2.0.0.CR6-chunksmith.1-javadoc.jar",
+          "url": "netty-external-signaling-2.0.0.CR6-chunksmith.1-javadoc.jar",
+          "size": 476706,
+          "sha512": "16c31196417f92fdcf9f6fcdd5bdf652d073e46da5f51fb0ca432f596995fb333230c5658fae835efa210a484acb580490b3fe4167409b688f69f21cf33a1fce",
+          "sha256": "0d84816f2a4ea38a82b698396885a5f3248b199ae8d27c88b0eb45ca21775dfd",
+          "sha1": "b92271a783cd1a6ea92b2c89c013c6aa1e818cd5",
+          "md5": "f66d8a04318e4843d386a8b53a6c164b"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "netty-external-signaling-2.0.0.CR6-chunksmith.1-sources.jar",
+          "url": "netty-external-signaling-2.0.0.CR6-chunksmith.1-sources.jar",
+          "size": 152285,
+          "sha512": "59b267756d3dd55462f4c1af4a9e332eab61e5369d436a5e6072f6e3bc88e2efd645dedff23a3d4af701ca808706cf937a408a95f0a3d6331a06de7b37857d8c",
+          "sha256": "0edff07283802ee05432088726cf716795ddbeff021dc7faa4e0151e370fc2e2",
+          "sha1": "de3825e74518fd52802d113b09fe18e3a91eb86b",
+          "md5": "ea426f9eb4b0cd4e064526756fabff83"
+        }
+      ]
+    }
+  ]
+}
