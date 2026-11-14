@@ -28,11 +28,13 @@ package org.geysermc.geyser.network.bedrock.nethernet;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.EventLoop;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.netty.channel.nethernet.AddressSource;
 import org.cloudburstmc.netty.channel.nethernet.NetherNetChannel;
 import org.cloudburstmc.netty.channel.nethernet.SourcedAddress;
 import org.cloudburstmc.protocol.bedrock.BedrockPeer;
+import org.cloudburstmc.protocol.bedrock.BedrockServerSession;
 import org.cloudburstmc.protocol.bedrock.PacketDirection;
 import org.cloudburstmc.protocol.bedrock.netty.codec.compression.CompressionCodec;
 import org.cloudburstmc.protocol.bedrock.netty.codec.compression.CompressionStrategy;
@@ -66,6 +68,11 @@ public class NetherNetChannelInitialiser extends GeyserServerInitializer {
     public NetherNetChannelInitialiser(GeyserImpl geyser, @Nullable GameOutcomeReporter outcomes) {
         super(geyser, "Geyser NetherNet player thread");
         this.outcomes = outcomes;
+    }
+
+    @Override
+    protected EventLoop sessionEventLoop(BedrockServerSession bedrockServerSession) {
+        return bedrockServerSession.getPeer().getChannel().eventLoop();
     }
 
     @Override

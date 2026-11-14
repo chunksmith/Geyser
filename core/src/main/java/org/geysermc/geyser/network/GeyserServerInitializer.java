@@ -27,6 +27,7 @@ package org.geysermc.geyser.network;
 
 import io.netty.channel.Channel;
 import io.netty.channel.DefaultEventLoopGroup;
+import io.netty.channel.EventLoop;
 import io.netty.util.concurrent.DefaultThreadFactory;
 import lombok.Getter;
 import org.checkerframework.checker.nullness.qual.NonNull;
@@ -54,11 +55,15 @@ public abstract class GeyserServerInitializer extends BedrockServerInitializer {
         this.eventLoopGroup = new DefaultEventLoopGroup(0, new DefaultThreadFactory(playerThreadName));
     }
 
+    protected EventLoop sessionEventLoop(BedrockServerSession bedrockServerSession) {
+        return this.eventLoopGroup.next();
+    }
+
     @Override
     public void initSession(@NonNull BedrockServerSession bedrockServerSession) {
         try {
             bedrockServerSession.setLogging(this.geyser.config().debugMode());
-            GeyserSession session = new GeyserSession(this.geyser, bedrockServerSession, this.eventLoopGroup.next());
+            GeyserSession session = new GeyserSession(this.geyser, bedrockServerSession, sessionEventLoop(bedrockServerSession));
 
             if (!bedrockServerSession.isSubClient()) {
                 InvalidPacketHandler handler = bedrockServerSession.getPeer().getChannel().pipeline().get(InvalidPacketHandler.class);
